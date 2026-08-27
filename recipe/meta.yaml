@@ -1,5 +1,5 @@
 {% set name = "readability-lxml" %}
-{% set version = "0.8.1" %}
+{% set version = "0.9" %}
 
 
 package:
@@ -7,8 +7,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/readability-lxml-{{ version }}.tar.gz
-  sha256: e51fea56b5909aaf886d307d48e79e096293255afa567b7d08bca94d25b1a4e1
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: f7a5f88ee194ed6c5aa36d14593fbfb20c5d7bb8f3f5bc57734288d45a5abe26
 
 build:
   number: 0
