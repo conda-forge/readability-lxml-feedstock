@@ -1,14 +1,14 @@
 {% set name = "readability-lxml" %}
-{% set version = "0.8.1" %}
+{% set version = "0.9" %}
 
 
 package:
   name: {{ name|lower }}
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/readability-lxml-{{ version }}.tar.gz
-  sha256: e51fea56b5909aaf886d307d48e79e096293255afa567b7d08bca94d25b1a4e1
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: f7a5f88ee194ed6c5aa36d14593fbfb20c5d7bb8f3f5bc57734288d45a5abe26
 
 build:
   number: 0
@@ -18,21 +18,24 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - poetry-core
+    - python {{ python_min }}
   run:
-    - chardet
-    - cssselect
-    - lxml
-    - python
+    - chardet >=5.2.0,<6
+    - cssselect >=1.3,<1.4
+    - lxml >=5.4,<7
+    - lxml-html-clean >=0.4.2,<0.5
+    - python >={{ python_min }}
 
 test:
   imports:
     - readability
-    - readability.compat
+    - readability.cleaners
   commands:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: http://github.com/buriy/python-readability
